@@ -25,11 +25,14 @@ func ReadXLSX(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Directory :", dir)
+	path := dir + "/controllers/file.xlsx"
+	fmt.Println("Directory 1:", path)
+	fmt.Println("Directory :", path)
 
-	xLSXFile, err := xlsx.OpenFile("controllers/file.xlsx")
+	xLSXFile, err := xlsx.OpenFile(path)
 	if err != nil {
-		log.Println(err.Error())
+		panic(err)
+		return
 	}
 
 	data := headerMap{}

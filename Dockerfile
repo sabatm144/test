@@ -1,12 +1,5 @@
-FROM alpine:3.6
-MAINTAINER mahendrank@benseron.com
+FROM golang:1.9.1
+MAINTAINER sabatm144@gmail.com
 
-RUN apk update && apk upgrade \
-  && rm -rf /var/cache/apk/*
-
-COPY public ./public/
-COPY linga-syncserver ./linga-syncserver
-RUN chmod +x ./linga-syncserver
-
-EXPOSE 9096
-CMD ["./linga-syncserver"]
+COPY ./server /go/src/test_1/server
+RUN go get -d -v ./...
