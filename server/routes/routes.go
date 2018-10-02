@@ -70,7 +70,7 @@ func HTTPRouteConfig() *httprouter.Router {
 
 	router := httprouter.New()
 	handler := alice.New(loggingHandler, recoverHandler)
-	router.GET("/readxlsx/:key", wrapHandler(handler.ThenFunc(controller.ReadXLSX)))
+	router.GET("/readxlsx/:key", wrapHandler(handler.ThenFunc(controller.ProcessXLSX)))
 
 	return router
 }
